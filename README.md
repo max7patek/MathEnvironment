@@ -22,3 +22,18 @@ The MathEnvironment also includes the Environment class, included in Environment
     evaluation mode.
 
 Altogether, the modules can be used to maintain a REPL with the user through a console. A possible implementation of this can be found in Main.py; however, the modules are designed to be flexible and usable in many different application contexts.
+
+Notes:
+ - There are probably (definitely) bugs. Let me know if you find one!
+ - The parser is configured to automatically identify any unknown token as a Variable. However, sometimes this is not desirable, so if you want to limit the Variables that can be identified, uncomment the two commented lines (currently 75 and 77, you will also have to indent line 76) in '_identify' in Expressions.py and pass a var_list to 'parse'
+ - Partial derivatives are automatically built into the modules. Pure partial derivatives can be computed by assigning the expression to be differentiated to a function. Then, the user can compute and use the derivative by adding an ‘_’ and the variable to be differentiated with respect to after the function name.
+ 
+    For example:
+    
+        ‘f(x,y,z) = e^x + y^2 + sin(z)’
+        
+        ‘f_y(456, 3, -634)’
+        
+            = 6
+            
+        ‘g(x) = f_y(0,x,0)’
