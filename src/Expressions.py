@@ -58,7 +58,7 @@ def tokenize(infix_string, library, var_list):
 
 
 def _identify(tok_list, library, var_list=None):
-    def tok_id(tok, library, var_list=None):  # TODO needs rewriting with Library dictionaries instead of lists
+    def tok_id(tok, library, var_list=None):
         if tok in '(){}[],_ ':
             return [tok, tok]
         if tok in library.constants.keys():
@@ -72,8 +72,8 @@ def _identify(tok_list, library, var_list=None):
             for var in var_list:
                 if tok == var:
                     return [tok, Variable(var)]
-
-        return [tok, Variable(tok)]  # TODO: check if an op, const, var is *in* the token
+        #else:
+        return [tok, Variable(tok)]
         #raise SyntaxError("Unrecognized Token")
 
     out = []
